@@ -10,6 +10,11 @@ public class Day2Test {
 
     @Test
     public void testGetSumPartOne() throws IOException {
-        assertEquals("", d2.getSumPartOne());
+        assertEquals(42378, d2.getSumPartOne());
+    }
+
+    @Test
+    public void testGetSumPartTwo() throws IOException {
+        assertEquals(246, d2.getSumParTwo());
     }
 }
