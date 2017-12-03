@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
@@ -14,13 +15,13 @@ public class Day2 {
         int sum = 0;
 
         while((firstRow = br.readLine()) != null) {
-            Set<Integer> set = new TreeSet<>(Stream.of(firstRow.split("\t")).map(Integer::parseInt).collect(Collectors.toList()));
+            List<Integer> set = Stream.of(firstRow.split("\t")).map(Integer::parseInt).collect(Collectors.toList());
             sum += getMaxMinDiff(set);
         }
         return sum;
     }
 
-    private int getMaxMinDiff(Set<Integer> set) {
+    private int getMaxMinDiff(List<Integer> set) {
         return set.stream().max(Integer::compare).get() - set.stream().min(Integer::compare).get();
     }
 }
