@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.io.IOException;
+
 import static org.junit.Assert.assertEquals;
 
 public class Day4Test {
@@ -14,7 +16,7 @@ public class Day4Test {
     }
 
     @Test
-    public void testMyInput() {
-        assertEquals(1, d4.getNoOfValidPassphrasesFromFile());
+    public void testMyInput() throws IOException {
+        assertEquals(383, d4.getNoOfValidPassphrasesFromFile());
     }
 }
