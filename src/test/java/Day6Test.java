@@ -31,7 +31,17 @@ public class Day6Test {
     }
 
     @Test
+    public void testGetNumberOfCyclesExamplePartTwo() {
+        assertEquals(4, d6.getNumberOfCycles(new Integer[] {0, 2, 7, 0}));
+    }
+
+    @Test
     public void testGetNumberOfTriesPartOne() {
-        assertEquals(5, d6.getNumberOfTries(new Integer[] {14, 0, 15, 12, 11, 11, 3, 5, 1, 6, 8, 4, 9, 1, 8, 4}));
+        assertEquals(11137, d6.getNumberOfTries(new Integer[] {14, 0, 15, 12, 11, 11, 3, 5, 1, 6, 8, 4, 9, 1, 8, 4}));
+    }
+
+    @Test
+    public void testGetNumberOfCyclesPartTwo() {
+        assertEquals(1037, d6.getNumberOfCycles(new Integer[] {14, 0, 15, 12, 11, 11, 3, 5, 1, 6, 8, 4, 9, 1, 8, 4}));
     }
 }

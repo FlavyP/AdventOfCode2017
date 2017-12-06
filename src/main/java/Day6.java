@@ -21,8 +21,44 @@ public class Day6 {
         return tries;
     }
 
+    public int getNumberOfCycles(Integer[] arr) {
+        int tries = 1;
+        Integer[] newArr = shuffle(arr);
+        Map<Integer[], Integer> allArrays = new HashMap<>();
+        boolean unique = true;
+        allArrays.put(Arrays.copyOf(newArr, newArr.length), 1);
+
+        while(unique) {
+            newArr = shuffle(newArr);
+            if(arrayUniqueInMap(allArrays, newArr)) {
+                allArrays.put(Arrays.copyOf(newArr, newArr.length), ++tries);
+            } else {
+                unique = false;
+            }
+        }
+        return tries+1-get(allArrays, newArr);
+    }
+
     public boolean arrayUniqueInList(List<Integer[]> allArrays, Integer[] newArr) {
         for(Integer[] arr : allArrays) {
+            if(Arrays.equals(arr, newArr)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public int get(Map<Integer[], Integer> allArrays, Integer[] newArr) {
+        for(Map.Entry<Integer[], Integer> entry : allArrays.entrySet()) {
+            if(Arrays.equals(entry.getKey(), newArr)) {
+                return entry.getValue();
+            }
+        }
+        return 0;
+    }
+
+    public boolean arrayUniqueInMap(Map<Integer[], Integer> allArrays, Integer[] newArr) {
+        for(Integer[] arr : allArrays.keySet()) {
             if(Arrays.equals(arr, newArr)) {
                 return false;
             }
