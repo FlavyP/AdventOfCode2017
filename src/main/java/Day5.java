@@ -17,7 +17,7 @@ public class Day5 {
         return moves.stream().mapToInt(i -> i).toArray();
     }
 
-    public int getStepsToEvade(int[] moves) throws IOException {
+    public int getStepsToEvadePartOne(int[] moves) throws IOException {
         int steps = 0;
         int currentIndex;
 
@@ -27,6 +27,37 @@ public class Day5 {
                 moves[i] = 1;
                 currentIndex = i;
                 i--;
+                steps++;
+            }
+            else {
+                moves[i] = val+1;
+                i+=val-1;
+                currentIndex = i;
+                steps++;
+            }
+            if(currentIndex < 0 || currentIndex > moves.length) {
+                return steps;
+            }
+        }
+        return steps;
+    }
+
+    public int getStepsToEvadePartTwo(int[] moves) throws IOException {
+        int steps = 0;
+        int currentIndex;
+
+        for(int i = 0; i < moves.length; i++) {
+            int val = moves[i];
+            if(val == 0) {
+                moves[i] = 1;
+                currentIndex = i;
+                i--;
+                steps++;
+            }
+            else if (val >= 3) {
+                moves[i] = val-1;
+                i+=val-1;
+                currentIndex = i;
                 steps++;
             }
             else {
